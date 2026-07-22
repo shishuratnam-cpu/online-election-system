@@ -24,9 +24,15 @@ const pool = mysql.createPool({
     console.log('Database connected successfully to MySQL.');
     connection.release();
   } catch (error) {
-    console.error('Database connection failed:', error.message);
-    console.error('Make sure MySQL service is running and credentials in .env are correct.');
-  }
+  console.error("========== DATABASE ERROR ==========");
+  console.error(error);
+  console.error("Message:", error.message);
+  console.error("Code:", error.code);
+  console.error("Host:", process.env.DB_HOST);
+  console.error("User:", process.env.DB_USER);
+  console.error("Database:", process.env.DB_NAME);
+  console.error("Port:", process.env.DB_PORT);
+}
 })();
 
 module.exports = pool;
