@@ -4,8 +4,8 @@
   "description": "Backend API server for Online Election Management System",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+  "start": "node initDatabase.js && node app.js",
+  "dev": "nodemon app.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
