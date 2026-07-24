@@ -15,7 +15,7 @@ require("dotenv").config();
     });
 
     let sql = fs.readFileSync(
-      path.join(__dirname, "../database/election.sql"),
+      path.join(__dirname, "database", "election.sql"),
       "utf8"
     );
 
