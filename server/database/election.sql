@@ -169,9 +169,12 @@ CREATE TABLE IF NOT EXISTS contact_settings (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         ON UPDATE CURRENT_TIMESTAMP
 );
-
-INSERT INTO contact_settings (phone, email)
-SELECT '+918978933844', 'shishuratnam15@gmail.com'
-WHERE NOT EXISTS (
-    SELECT 1 FROM contact_settings
-);
+INSERT INTO contact_settings (id, phone, email)
+VALUES (
+    1,
+    '+91-8978933844',
+    'shishuratnam15@gmail.com'
+)
+ON DUPLICATE KEY UPDATE
+phone = VALUES(phone),
+email = VALUES(email);
