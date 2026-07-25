@@ -161,3 +161,17 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 INSERT INTO `admin` (`username`, `email`, `password_hash`) 
 VALUES ('admin', 'admin@election.com', '$2b$10$wK1mB5qJvxZ/a3eD4y5vUeXh9xJ4e0d7/B41/uR99q6s3w.H7m9yq')
 ON DUPLICATE KEY UPDATE `username`=`username`;
+-- Contact Settings Table
+CREATE TABLE IF NOT EXISTS contact_settings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    phone VARCHAR(20) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO contact_settings (phone, email)
+SELECT '9876543210', 'admin@election.com'
+WHERE NOT EXISTS (
+    SELECT 1 FROM contact_settings
+);
