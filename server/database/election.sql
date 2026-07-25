@@ -171,7 +171,7 @@ CREATE TABLE IF NOT EXISTS contact_settings (
 );
 
 INSERT INTO contact_settings (phone, email)
-SELECT '+91-8978933844', 'shishuratnam15@gmail.com'
+SELECT '+918978933844', 'shishuratnam15@gmail.com'
 WHERE NOT EXISTS (
     SELECT 1 FROM contact_settings
 );
