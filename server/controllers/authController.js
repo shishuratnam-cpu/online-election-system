@@ -224,12 +224,19 @@ const loginOrganizer = async (req, res) => {
  * Admin Login
  */
 const loginAdmin = async (req, res) => {
+  // const { username, password } = req.body;
+  // console.log("Request Body:", req.body);
   const { username, password } = req.body;
-  console.log("Request Body:", req.body);
+
+console.log("========== ADMIN LOGIN ==========");
+console.log("Request Body:", req.body);
+console.log("Username:", username);
+console.log("Password:", password);
   const ip = req.ip || req.socket.remoteAddress;
 
   try {
     const [rows] = await db.query('SELECT * FROM admin WHERE username = ?', [username]);
+    console.log("Database Result:", rows);
     if (rows.length === 0) {
       return res.status(400).json({ message: 'Invalid username or password.' });
     }
