@@ -69,6 +69,10 @@ const app = express();
 // CORS CONFIGURATION
 // ===============================
 
+// ===============================
+// CORS CONFIGURATION
+// ===============================
+
 const allowedOrigins = [
   'http://localhost:5173',
   'http://192.168.43.200:5173',
@@ -76,23 +80,7 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-  origin: function (origin, callback) {
-
-    // Allow requests without an Origin
-    // (Postman, server-to-server, etc.)
-    if (!origin) {
-      return callback(null, true);
-    }
-
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-
-    console.log('Blocked CORS origin:', origin);
-
-    return callback(new Error('Not allowed by CORS'));
-  },
-
+  origin: allowedOrigins,
   credentials: true
 }));
 
