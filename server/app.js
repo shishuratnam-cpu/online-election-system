@@ -71,7 +71,8 @@ const app = express();
 
 const allowedOrigins = [
   'http://localhost:5173',
-  'http://192.168.43.200:5173'
+  'http://192.168.43.200:5173',
+  'https://disciplined-freedom-production-45c5.up.railway.app'
 ];
 
 app.use(cors({
