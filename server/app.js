@@ -80,10 +80,24 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: function (origin, callback) {
+
+    // Allow requests without an Origin
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    // Allow approved origins
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    console.log('Blocked CORS origin:', origin);
+    return callback(new Error('Not allowed by CORS'));
+  },
+
   credentials: true
 }));
-
 // ===============================
 // BODY PARSING
 // ===============================
