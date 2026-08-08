@@ -20,6 +20,12 @@ api.interceptors.request.use(
       config.headers.Authorization = `Bearer ${token}`;
     }
 
+    console.log(
+      'Request:',
+      config.method?.toUpperCase(),
+      config.baseURL + config.url
+    );
+
     return config;
   },
   (error) => {
@@ -35,7 +41,7 @@ api.interceptors.response.use(
     if (
       error.response &&
       (error.response.status === 401 ||
-        error.response.status === 403)
+       error.response.status === 403)
     ) {
       const currentPath = window.location.pathname;
 
